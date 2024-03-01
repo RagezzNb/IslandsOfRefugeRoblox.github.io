@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.background-image {
+    background-image: url('background_image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.content {
+    text-align: center;
+    padding: 50px;
+    color: white;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#countdown {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.attributes {
+    margin-top: 40px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.discord {
+    margin-top: 40px;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7289da;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #5f73bc;
+}
