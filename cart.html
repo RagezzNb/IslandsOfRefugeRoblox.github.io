@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+<h1>Cart</h1>
+<nav>
+  <a href="index.html">Continue Shopping</a>
+</nav>
+</header>
+<main>
+<section id="cart" class="tab-content">
+  <h2>Cart</h2>
+  <ul id="cartItems">
+    <!-- Cart items will be added here -->
+  </ul>
+  <p>Total: $<span id="cartTotal">0.00</span></p>
+  <button id="checkoutBtn" onclick="checkout()">Checkout</button>
+</section>
+<section id="payment" class="tab-content" style="display: none;">
+  <h2>Payment</h2>
+  <p>Choose your payment method:</p>
+  <input type="radio" id="cash" name="payment" value="cash">
+  <label for="cash">Cash on Delivery</label><br>
+  <input type="radio" id="paypal" name="payment" value="paypal">
+  <label for="paypal">PayPal</label><br>
+  <button onclick="pay()">Pay</button>
+</section>
+<section id="account" class="tab-content" style="display: none;">
+  <h2>Create Account</h2>
+  <p>Create an account using Google:</p>
+  <button onclick="createAccount()">Create Account with Google</button>
+</section>
+</main>
+<footer>
+<p>&copy; 2024 Online Shopping. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

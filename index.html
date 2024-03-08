@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Islands Of Refuge</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Shopping Website</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="navbar">
-        <a href="#" class="tablink active" onclick="openTab(event, 'home')">Home</a>
-        <a href="#" class="tablink" onclick="openTab(event, 'about')">About the Game</a>
-        <a href="#" class="tablink" onclick="openTab(event, 'countdown')">Countdown</a>
-        <a href="#" class="tablink" onclick="openTab(event, 'socials')">Our Socials</a>
+<header>
+<h1>Online Shopping</h1>
+<nav>
+  <a href="#" class="active" onclick="showTab('home')">Home</a>
+  <a href="#" onclick="showTab('search')">Search</a>
+  <a href="#" onclick="showTab('about')">About</a>
+  <a href="#" onclick="showTab('contact')">Contact Us</a>
+  <a href="cart.html" id="cartBtn">Cart (0)</a>
+</nav>
+</header>
+<main>
+<section id="home" class="tab-content">
+  <h2>Home</h2>
+  <div class="products">
+    <!-- Product listings will be added here -->
+    <div class="product">
+      <img src="product1.jpg" alt="Product 1">
+      <h3>Product 1</h3>
+      <p>$10.00</p>
+      <button onclick="addToCart(1)">Add to Cart</button>
     </div>
-    
-    <div id="home" class="tabcontent">
-        <div class="hero">
-            <img src="https://th.bing.com/th/id/OIG4.4ppd5ttrj4RQqwtxnVUL?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Islands Of Refuge">
-        </div>
-        <div class="hero-content">
-            <h1>Welcome to Islands of Refuge!</h1>
-            <p style="font-family: Montserrat; color: red;"><strong>Explore mysterious islands, uncover hidden treasures, and build your own paradise!</strong></p>
-            <p><strong>What Can You Do In Islands Of Refugee?</strong></p>
-            <ul>
-                <li>Build, loot, and conquer in Your World!</li>
-                <li>Gather resources, craft new tools, and protect your base against enemies!</li>
-                <li>Defeat bosses, explore new structures, and claim epic loot!</li>
-                <li>Explore new biomes, collect new tools, and upgrade armor!</li>
-                <li>Form clans, forge alliances, and start domination in the battlefield!</li>
-                <li>Experience endless adventure and triumph with friends!</li>
-                <li>Stay tuned for weekly updates!</li>
-                <li>Join us now and become a legend in the making! Releases on 31<sup>st</sup> of March 2024!</li>
-            </ul>
-        </div>
+    <div class="product">
+      <img src="product2.jpg" alt="Product 2">
+      <h3>Product 2</h3>
+      <p>$15.00</p>
+      <button onclick="addToCart(2)">Add to Cart</button>
     </div>
-    
-    <div id="about" class="tabcontent">
-        <h1>About the Game</h1>
-        <p>Islands of Refuge is an exciting new Roblox game where you can loot different structures, armor up, and fight the unknown. Inspired by Minecraft and made by a dedicated developer and his friend.</p>
-    </div>
-    
-    <div id="countdown" class="tabcontent">
-        <center><h1>Countdown</h1></center>
-        <p>Countdown to the Islands of Refugee</p>
-        <div id="countdown"></div>
-    </div>
-    
-    <div id="socials" class="tabcontent">
-        <h1>Our Socials</h1>
-        <ul>
-            <li><a href="https://discord.gg/MudyYrA8Ra">Discord</a></li>
-            <li><a href="your_twitter_link_here">Twitter</a></li>
-            <li><a href="your_facebook_link_here">Youtube</a></li>
-        </ul>
-    </div>
-
-    <script src="script.js"></script>
+    <!-- Add more products here -->
+  </div>
+</section>
+<section id="search" class="tab-content" style="display: none;">
+  <h2>Search</h2>
+  <input type="text" id="searchInput" placeholder="Search...">
+  <button onclick="search()">Search</button>
+</section>
+<section id="about" class="tab-content" style="display: none;">
+  <h2>About</h2>
+  <p>Learn more about our company.</p>
+</section>
+<section id="contact" class="tab-content" style="display: none;">
+  <h2>Contact Us</h2>
+  <p>Get in touch with us.</p>
+</section>
+</main>
+<footer>
+<p>&copy; 2024 Online Shopping. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>

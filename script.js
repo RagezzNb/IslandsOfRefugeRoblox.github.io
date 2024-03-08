@@ -1,42 +1,89 @@
-// Set the date we're counting down to
-var countDownDate = new Date("Mar 31, 2024 00:00:00").getTime();
+var cart = [];
+var products = [];
 
-// Update the countdown every second
-var x = setInterval(function() {
+document.addEventListener('DOMContentLoaded', function() {
+  generateProducts();
+  updateCart();
+});
 
-    // Get the current date and time
-    var now = new Date().getTime();
+function generateProducts() {
+  for (let i = 1; i <= 50; i++) {
+    products.push({
+      id: i,
+      name: 'Product ' + i,
+      price: Math.floor(Math.random() * 100) + 1,
+      quantity: 0
+    });
+  }
+  renderProducts();
+}
 
-    // Calculate the distance between now and the countdown date
-    var distance = countDownDate - now;
+function renderProducts() {
+  var cartItems = document.getElementById('cartItems');
+  cartItems.innerHTML = '';
+  var total = 0;
+  cart.forEach(function(item) {
+    var li = document.createElement('li');
+    li.textContent = `${item.name} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+    var removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', function() {
+      removeFromCart(item.id);
+    });
+    li.appendChild(removeBtn);
+    cartItems.appendChild(li);
+    total += item.price * item.quantity;
+  });
+  document.getElementById('cartTotal').textContent = total.toFixed(2);
+}
 
-    // Calculate days, hours, minutes, and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+function addToCart(productId) {
+  var product = products.find(p => p.id === productId);
+  var cartItem = cart.find(item => item.id === productId);
+  if (cartItem) {
+    cartItem.quantity++;
+  } else {
+    cart.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+  }
+  updateCart();
+}
 
-    // Display the countdown
-    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-
-    // If the countdown is over, display a message
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "Game is here!";
+function removeFromCart(productId) {
+  var index = cart.findIndex(item => item.id === productId);
+  if (index !== -1) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+    } else {
+      cart.splice(index, 1);
     }
-}, 1000);
+  }
+  updateCart();
+}
 
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+function updateCart() {
+  var cartItems = document.getElementById('cartBtn');
+  cartItems.textContent = 'Cart (' + cart.reduce((total, item) => total + item.quantity, 0) + ')';
+  renderProducts();
+}
+
+function showTab(tabName) {
+  var tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(function(tab) {
+    tab.style.display = 'none';
+  });
+  var tab = document.getElementById(tabName);
+  tab.style.display = 'block';
+}
+
+function checkout() {
+  showTab('payment');
+}
+
+function pay() {
+  var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+  alert('Payment method: ' + paymentMethod);
+}
+
+function createAccount() {
+  alert('Creating account with Google');
 }
